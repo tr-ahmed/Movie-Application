@@ -1,0 +1,99 @@
+<!-- Search Bar -->
+ 
+<div class="container mt-4">
+  <div class="input-group mb-3" >
+      <input [(ngModel)]="query" (ngModelChange)="filterResults()" type="text" class="form-control rounded-2" placeholder="Search for movies">
+      <button class="btn ms-3 rounded-2" style="background-color: #ffc107;" routerLink="search">Search</button>
+  </div>
+
+  <!-- Movie Grid -->
+  <div class="row row-cols-2 row-cols-md-4 g-4">
+    <div class="col" *ngFor="let movie of searchedMovies">
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative">
+        <img [routerLink]="['/details', movie.id]" class="card-img-top  rounded-0" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+
+        <!-- Donut Rating -->
+        <div class="position-absolute m-2" style="width: 50px; height: 50px; bottom: 101px; left: 10px">
+          <svg viewBox="0 0 36 36" width="50" height="50">
+            <path
+              d="M18 2.0845
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831"
+              stroke="#e6e6e6" stroke-width="4" fill="none" />
+            <path
+              [attr.stroke]="getStrokeColor(movie.vote_average)"
+              [attr.stroke-dasharray]="(movie.vote_average / 10 * 100) "
+              d="M18 2.0845
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831"
+              stroke-width="4" fill="none" stroke-linecap="round" />
+            <circle cx="18" cy="18" r="15" fill="#14532d" />
+            <text x="18" y="20.5" text-anchor="middle" fill="#fff" font-size="8" dominant-baseline="middle">
+              {{ movie.vote_average * 10 | number : '1.1-1' }} %
+            </text>
+          </svg>
+        </div>
+
+        <div class="card-body">
+          <h6 class="card-title mt-3">{{ movie.title }}</h6>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <p class="card-text text-muted">
+                {{ movie.release_date | date: 'MMM dd, yyyy' }} 
+              </p>
+            </div>
+            <div>
+              <i
+                class="fs-3"
+                [ngClass]="{
+                  'bi-heart-fill text-warning': isFavorite(movie),
+                  'bi-heart': !isFavorite(movie)
+                }"
+                style="cursor: pointer;"
+                (click)="toggleFavorite(movie)">
+              </i>
+            </div>
+          </div>            
+        </div>
+        <div class="card-footer bg-white border-0 text-end">
+<!-- Favorite Icon -->
+<div class=" bg-white border-0 text-end">
+  
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Pagination -->
+<nav *ngIf="totalPages > 1" class="mt-4">
+  <ul class="pagination justify-content-center">
+    <li 
+      class="page-item"
+      [class.disabled]="currentPage === 1"
+      (click)="changePage(currentPage - 1)">
+      <a class="page-link text-dark" style="background-color: #ffc107; border: none;" href="javascript:void(0)">Previous</a>
+    </li>
+
+    <li 
+      class="page-item" 
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      [class.active]="currentPage === i + 1"
+      (click)="changePage(i + 1)">
+      <a 
+        class="page-link" 
+        [ngClass]="{'bg-warning text-dark': currentPage === i + 1, 'text-dark': currentPage !== i + 1}" 
+        href="javascript:void(0)">
+        {{ i + 1 }}
+      </a>
+    </li>
+
+    <li 
+      class="page-item"
+      [class.disabled]="currentPage === totalPages"
+      (click)="changePage(currentPage + 1)">
+      <a class="page-link text-dark" style="background-color: #ffc107; border: none;" href="javascript:void(0)">Next</a>
+    </li>
+  </ul>
+</nav>
+</div>
