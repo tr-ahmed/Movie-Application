@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-wishlist',
-  imports: [RouterLink, RouterLinkActive,CommonModule, FormsModule],
+  imports: [RouterLink,CommonModule, FormsModule],
   templateUrl: './wishlist.html',
   styleUrl: './wishlist.css'
 })
