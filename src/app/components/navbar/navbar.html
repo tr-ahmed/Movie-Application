@@ -1,31 +1,29 @@
 <div style="background-color: #FFE353;"> 
-    <nav class="container navbar navbar-expand-lg  px-4">
-        <div class="navbar-brand fw-bold" routerLinkActive="bg-warning" [routerLinkActiveOptions]="{ exact: true }">
-            <a routerLink="/home" style="text-decoration: none; color: black;">Movie App</a>
+    <nav class="container navbar navbar-expand-lg px-4">
+        <div class="navbar-brand fw-bold">
+            <a routerLink="/home" style="text-decoration: none; color: black;">
+                <i class="bi bi-film me-2"></i>
+                Movie App
+            </a>
         </div>
 
         <div class="ms-auto d-flex align-items-center">
-            <div class="me-5 nav-item dropdown" style="cursor: pointer;">
-                <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    En
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item " href="#">En</a></li>
-                    <li><a class="dropdown-item" href="#">Ar</a></li>
-                    <li><a class="dropdown-item" href="#">Fr</a></li>
-                    <li><a class="dropdown-item" href="#">Zh</a></li>
-                </ul>
-            </div>
-
-            <div class="navbar-brand"  routerLinkActive="bg-warning" [routerLinkActiveOptions]="{ exact: true }">
-                <a routerLink="/wishlist" style="text-decoration: none; color: black;"> 
-                    <i class="bi bi-heart-fill me-2 fs-5"></i> <span class="fw-bold">Wishlist 
-                    </span>
-                    <div class="counter" *ngIf="counter != 0">{{counter}}</div>
+            <!-- Wishlist Link -->
+            <div class="navbar-brand position-relative">
+                <a routerLink="/wishlist" style="text-decoration: none; color: black;">
+                    <i class="bi bi-heart-fill me-2 fs-5"></i>
+                    <span class="counter" *ngIf="counter != 0">{{ counter }}</span>
+                    Wishlist
                 </a>
             </div>
 
-            
+            <!-- Authentication Buttons -->
+            <div class="navbar-brand" *ngIf="!isLoggedIn">
+                <a routerLink="/login" class="btn btn-dark px-4 py-2 rounded-pill">Login</a>
+            </div>
+            <div class="navbar-brand" *ngIf="isLoggedIn">
+                <button class="btn btn-danger px-4 py-2 rounded-pill" (click)="logout()">Logout</button>
+            </div>
         </div>
     </nav>
-</div>  
+</div>

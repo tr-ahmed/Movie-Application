@@ -1,12 +1,65 @@
+/* General Navbar Styling */
+.navbar {
+    background-color: #FFE353;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.navbar-brand {
+    color: black;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: #007bff;
+}
+
+.nav-link {
+    color: black;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+/* Wishlist Counter */
 .counter {
     position: absolute;
-    top: 3px;
-    right: 0px;
-    color: red;
-    font-size: 24px;
-    background-color: white;
-    width: 35px;
-    height: 35px;
+    top: -5px;
+    left: 20px;
+    background-color: #dc3545;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     text-align: center;
+    line-height: 20px;
+    border: 1px solid #ffffff;
+}
+
+/* Buttons */
+.btn-dark {
+    background-color: #343a40;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+    color: #ffffff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
 }
