@@ -69,7 +69,7 @@ favorites: any[] = [];
   }
 
   getPosterUrl(path: string) {
-    return path ? https://image.tmdb.org/t/p/w500${path} : 'assets/no-image.png';
+    return path ? 'https://image.tmdb.org/t/p/w500${path}' : 'assets/no-image.png';
   }
 
   getStrokeColor(vote: number): string {
