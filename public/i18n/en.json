@@ -1,0 +1,59 @@
+{
+  "NAVBAR": {
+    "WISHLIST": "Wishlist",
+    "TITEL": "Movies",
+    "LOGIN" : "Log In",
+    "LOGOUT" : "Log Out"
+  },
+  "HOME": {
+    "TITEL":"Welcome to our movie app",
+    "SUB_TITEL":"Millions of movies, TV shows, and people to discover. Explore now",
+    "NOW_PLAYING": "Now Playing",
+    "SEARCH_PLACEHOLDER":"Search for movies",
+    "SERCH":"Search",
+    "PREVIOUS":"Previous",
+    "NEXT":"Next"
+  },
+  "LOGIN":{
+    "TITEL":"Please login to your account",
+    "USERNAME":"Username",
+    "PASSWORD":"Password",
+    "TIL_TITEL":"Don't have an account?",
+    "REGISTER":"Register",
+    "LOGIN" : "Log In",
+    "ENTER_YOUR_PASSWORD":"Enter your password",
+    "ENTER_YOUR_USERNAME":"Enter your username"
+  },
+  "REGISTER":{
+    "REGISTER":"Register",
+    "TITEL":"Create a new account",
+    "USERNAME":"Username",
+    "PASSWORD":"Password",
+    "LOGIN" : "Log In",
+    "CONFIRM_PASSWORD":"Confirm Password",
+    "TIL_TITEL":"Already have an account?",
+    "CONFIRM_YOUR_PASSWORD":"Confirm your password",
+    "ENTER_YOUR_PASSWORD":"Enter your password",
+    "ENTER_YOUR_USERNAME":"Enter your username"
+  },
+  "WISHLIST":{
+    "TITEL":"No Movies in watch list",
+    "BACK_TO_HOME":"Back to home"
+  },
+  "TOAST": {
+    "AUTHENTICATION_REQUIRED_TITLE": "Authentication Required",
+    "WISHLIST_LOGIN_REQUIRED_MESSAGE": "You need to log in to add movies to your wishlist.",
+    "ADDED_TO_FAVORITES": "'{{movieTitle}}' added to favorites!",
+    "REMOVED_FROM_FAVORITES": "'{{movieTitle}}' removed from favorites!"
+  },
+  "MOVIE_DETAILS": {
+    "LANGUAGE": "Language",
+    "DURATION": "Duration",
+    "MINS": "Mins",
+    "BACK_TO_MOVIES": "← Back to Movies",
+    "RECOMMENDED_MOVIES": "Recommended Movies",
+    "OVERVIEW": "Overview",
+    "RATING": "Rating",
+    "RELEASE_DATE": "Release Date"
+  }
+}

@@ -1,39 +1,5 @@
-/* General Modal Styling */
-.modal-content {
-  background-color: #f8f9fa; /* Light gray background for the modal */
-}
-
-.modal-header {
-  border-bottom: none; /* Remove header border */
-}
-
-.modal-body {
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Buttons Styling */
-.btn-dark {
-  background-color: #ffc107;
-  border: none;
-  color: #000;
-}
-
-.btn-dark:hover {
-  background-color: #e0a800;
-  color: #000;
-}
-
-.btn-outline-dark {
-  border: 2px solid #ffc107;
-  color: #ffc107;
-}
-
-.btn-outline-dark:hover {
-  background-color: #ffc107;
-  color: #000;
-}
-
-/* Rounded Edges */
-.modal-content {
-  border-radius: 15px;
+.pagination .page-item.active .page-link {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #000;
 }

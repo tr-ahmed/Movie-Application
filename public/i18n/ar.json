@@ -1,0 +1,60 @@
+{
+  "NAVBAR": {
+    "WISHLIST": "قائمة المشاهدة",
+    "TITEL": "أفلام",
+     "LOGIN" : "تسجيل الدخول",
+     "LOGOUT" : "تسجيل الخروج"
+  },
+  "HOME": {
+    "TITEL":"مرحبًا بك في تطبيق الأفلام الخاص بنا",
+    "SUB_TITEL":"ملايين الأفلام والبرامج التلفزيونية والأشخاص لاكتشافهم. استكشف الآن",
+    "NOW_PLAYING": "يُعرض الآن",
+    "SEARCH_PLACEHOLDER":"ابحث عن أفلام",
+    "SERCH":"بحث",
+    "PREVIOUS":"السابق",
+    "NEXT":"التالي"
+
+  },
+  "LOGIN":{
+    "TITEL":"الرجاء تسجيل الدخول إلى حسابك",
+    "USERNAME":"اسم المستخدم",
+    "PASSWORD":"كلمة المرور",
+    "TIL_TITEL":"لا تملك حسابًا؟",
+    "REGISTER":"إنشاء حساب",
+    "LOGIN" : "تسجيل الدخول",
+    "ENTER_YOUR_PASSWORD":"أدخل كلمة مرورك",
+    "ENTER_YOUR_USERNAME":"أدخل اسم المستخدم الخاص بك"
+  },
+  "REGISTER":{
+    "REGISTER":"إنشاء حساب",
+    "TITEL":"إنشاء حساب جديد",
+    "USERNAME":"اسم المستخدم",
+    "PASSWORD":"كلمة المرور",
+    "LOGIN" : "تسجيل الدخول",
+    "CONFIRM_PASSWORD":"تأكيد كلمة المرور",
+    "TIL_TITEL":"لديك حساب بالفعل؟",
+    "CONFIRM_YOUR_PASSWORD":"أكّد كلمة مرورك",
+    "ENTER_YOUR_PASSWORD":"أدخل كلمة مرورك",
+    "ENTER_YOUR_USERNAME":"أدخل اسم المستخدم الخاص بك"
+  },
+  "WISHLIST":{
+    "TITEL":"لا توجد أفلام في قائمة المشاهدة",
+    "BACK_TO_HOME":"العودة إلى الرئيسية"
+  },
+  "TOAST": {
+    "AUTHENTICATION_REQUIRED_TITLE": "المصادقة مطلوبة",
+    "WISHLIST_LOGIN_REQUIRED_MESSAGE": "تحتاج إلى تسجيل الدخول لإضافة أفلام إلى قائمة أمنياتك.",
+    "ADDED_TO_FAVORITES": "تمت إضافة '{{movieTitle}}' إلى المفضلة!",
+    "REMOVED_FROM_FAVORITES": "تمت إزالة '{{movieTitle}}' من المفضلة!"
+  },
+  "MOVIE_DETAILS": {
+    "LANGUAGE": "اللغة",
+    "DURATION": "المدة",
+    "MINS": "دقيقة",
+    "BACK_TO_MOVIES": "→ العودة إلى الأفلام",
+    "RECOMMENDED_MOVIES": "أفلام موصى بها",
+    "OVERVIEW": "نظرة عامة",
+    "RATING": "التقييم",
+    "RELEASE_DATE": "تاريخ الإصدار"
+  }
+}

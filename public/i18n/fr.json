@@ -1,0 +1,59 @@
+{
+  "NAVBAR": {
+    "WISHLIST": "Liste de souhaits",
+    "TITEL": "Films",
+    "LOGIN" : "Se connecter",
+    "LOGOUT" : "Se déconnecter"
+  },
+  "HOME": {
+    "TITEL":"Bienvenue dans notre application de films",
+    "SUB_TITEL":" Des millions de films, d'émissions de télévision et de personnes à découvrir. Explorez maintenant",
+    "NOW_PLAYING": "À l'affiche",
+    "SEARCH_PLACEHOLDER":"Rechercher des films",
+    "SERCH":"Rechercher",
+    "PREVIOUS":"Précédent",
+    "NEXT":"Suivant"
+  },
+  "LOGIN":{
+    "TITEL":"Veuillez vous connecter à votre compte",
+    "USERNAME":"Nom d'utilisateur",
+    "PASSWORD":"Mot de passe",
+    "TIL_TITEL":"Vous n'avez pas de compte?",
+    "REGISTER":"S'inscrire",
+    "LOGIN" : "Se connecter",
+    "ENTER_YOUR_PASSWORD":"Entrez votre mot de passe",
+    "ENTER_YOUR_USERNAME":"Entrez votre nom d'utilisateur"
+  },
+  "REGISTER":{
+    "REGISTER":"S'inscrire",
+    "TITEL":"Créer un nouveau compte",
+    "USERNAME":"Nom d'utilisateur",
+    "PASSWORD":"Mot de passe",
+    "LOGIN" : "Se connecter",
+    "CONFIRM_PASSWORD":"Confirmer le mot de passe",
+    "TIL_TITEL":"Vous avez déjà un compte?",
+    "CONFIRM_YOUR_PASSWORD":"Confirmez votre mot de passe",
+    "ENTER_YOUR_PASSWORD":"Entrez votre mot de passe",
+    "ENTER_YOUR_USERNAME":"Entrez votre nom d'utilisateur"
+  },
+  "WISHLIST":{
+    "TITEL":"Aucun film dans la liste de visionnage",
+    "BACK_TO_HOME":"Retour à l'accueil"
+  },
+  "TOAST": {
+    "AUTHENTICATION_REQUIRED_TITLE": "Authentification requise",
+    "WISHLIST_LOGIN_REQUIRED_MESSAGE": "Vous devez vous connecter pour ajouter des films à votre liste de favoris.",
+    "ADDED_TO_FAVORITES": "'{{movieTitle}}' a été ajouté aux favoris !",
+    "REMOVED_FROM_FAVORITES": "'{{movieTitle}}' a été retiré des favoris !"
+  },
+  "MOVIE_DETAILS": {
+    "LANGUAGE": "Langue",
+    "DURATION": "Durée",
+    "MINS": "Min",
+    "BACK_TO_MOVIES": "← Retour aux films",
+    "RECOMMENDED_MOVIES": "Films recommandés",
+    "OVERVIEW": "Aperçu",
+    "RATING": "Note",
+    "RELEASE_DATE": "Date de sortie"
+  }
+}

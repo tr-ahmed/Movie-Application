@@ -8,16 +8,16 @@
       <h2 class="mb-3  fw-bold border-bottom pb-2">{{ movie.title }}</h2>
        <i style="color: #ffc107;" class="bi bi-heart-fill me-2 fs-3 position-absolute top-0 end-0 "></i>
       <p class="mb-2 fs-4 fw-bold">
-        <strong class="fs-3">Release Date:</strong>
+        <strong class="fs-3">{{'MOVIE_DETAILS.RELEASE_DATE' | translate}}</strong>
         {{ movie.release_date }}
       </p>
 
       <p class="mb-2 fs-5 fw-bold">
-        <strong class="fs-3">Rating:</strong>
+        <strong class="fs-3">{{'MOVIE_DETAILS.RATING' | translate}}</strong>
         ⭐ {{ movie.vote_average }}/10
       </p>
 
-      <p class="mb-1 fs-5 fw-bold"><strong class="">Overview:</strong></p>
+      <p class="mb-1 fs-5 fw-bold"><strong class="">{{'MOVIE_DETAILS.OVERVIEW' | translate}}</strong></p>
       <p class=" small fs-5 fw-bold" style="line-height: 1.6;">{{ movie.overview }}</p>
        
 
@@ -40,12 +40,12 @@
         <!-- Row for Duration & Language -->
 <div class="d-flex flex-wrap gap-4 mb-3">
   <p class="mb-0  ">
-    <strong class="">Duration:</strong>
-    {{ movie.runtime }} Mins
+    <strong class="">{{'MOVIE_DETAILS.DURATION' | translate}}</strong>
+    {{ movie.runtime }} {{'MOVIE_DETAILS.MINS' | translate}}
   </p>
 
   <p class="mb-0 ">
-    <strong class="">Language:</strong>
+    <strong class="">{{'MOVIE_DETAILS.LANGUAGE' | translate}}</strong>
     {{ movie.original_language | uppercase }}
   </p>
 </div>
@@ -53,7 +53,7 @@
 
 
 
-      <a class="btn mt-3 text-dark fw-bold" style="background-color: #ffc107;" routerLink="/home">← Back to Movies</a>
+      <a class="btn mt-3 text-dark fw-bold" style="background-color: #ffc107;" routerLink="/home">{{'MOVIE_DETAILS.BACK_TO_MOVIES' | translate}}</a>
     </div>
   </div>
 </div>
@@ -62,7 +62,7 @@
 
   <!-- Recommendations Section -->
 <div class="mt-5 container">
-  <h4 class="fs-3 fw-bold mb-4 border-bottom pb-2">Recommended Movies</h4>
+  <h4 class="fs-3 fw-bold mb-4 border-bottom pb-2">{{'MOVIE_DETAILS.RECOMMENDED_MOVIES' | translate}}</h4>
 
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
     <div class="col" *ngFor="let movie of recommendedMovies.slice(0, 4)">

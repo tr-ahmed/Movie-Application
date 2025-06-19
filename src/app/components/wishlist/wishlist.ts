@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MovieService } from '../../shared/movie-service';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wishlist',
-  imports: [RouterLink,CommonModule, FormsModule],
+  imports: [RouterLink,CommonModule,TranslateModule, FormsModule],
   templateUrl: './wishlist.html',
   styleUrl: './wishlist.css'
 })
-export class Wishlist  {
-  
-  private favoritesSubject = new BehaviorSubject<any[]>([]);
+export class Wishlist {
+private favoritesSubject = new BehaviorSubject<any[]>([]);
   favorites: any[] = []
   counter: number = 0;
 
@@ -59,5 +59,4 @@ export class Wishlist  {
     return this.favorites.length;
   }
 
-  
 }

@@ -1,61 +1,61 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
   <div class="card shadow-sm border-0 rounded-4 p-4" style="max-width: 400px; width: 100%;">
     <div class="text-center mb-4">
-      <h2 class="fw-bold">Register</h2>
-      <p class="text-muted">Create a new account</p>
+      <h2 class="fw-bold">{{ 'REGISTER.REGISTER' | translate}}</h2>
+      <p class="text-muted">{{ 'REGISTER.TITEL' | translate}}</p>
     </div>
-    <form (ngSubmit)="register()">
+    <form (ngSubmit)="register()"> 
       <!-- Username Field -->
       <div class="mb-3">
-        <label for="username" class="form-label fw-semibold">Username</label>
+        <label for="username" class="form-label fw-semibold">{{ 'REGISTER.USERNAME' | translate}}</label>
         <input
           type="text"
           id="username"
           class="form-control shadow-sm"
           [(ngModel)]="username"
           name="username"
-          placeholder="Enter your username"
+          placeholder="{{'REGISTER.ENTER_YOUR_USERNAME' | translate}}"
           required
         />
       </div>
 
       <!-- Password Field -->
       <div class="mb-3">
-        <label for="password" class="form-label fw-semibold">Password</label>
+        <label for="password" class="form-label fw-semibold">{{ 'REGISTER.PASSWORD' | translate}}</label>
         <input
           type="password"
           id="password"
           class="form-control shadow-sm"
           [(ngModel)]="password"
           name="password"
-          placeholder="Enter your password"
+          placeholder="{{'REGISTER.ENTER_YOUR_PASSWORD' | translate}}"
           required
         />
       </div>
 
       <!-- Confirm Password Field -->
       <div class="mb-3">
-        <label for="confirmPassword" class="form-label fw-semibold">Confirm Password</label>
+        <label for="confirmPassword" class="form-label fw-semibold">{{ 'REGISTER.CONFIRM_PASSWORD' | translate}}</label>
         <input
           type="password"
           id="confirmPassword"
           class="form-control shadow-sm"
           [(ngModel)]="confirmPassword"
           name="confirmPassword"
-          placeholder="Confirm your password"
+          placeholder="{{'REGISTER.CONFIRM_YOUR_PASSWORD' | translate}}"
           required
         />
       </div>
 
       <!-- Error Message -->
-      <div *ngIf="errorMessage" class="alert alert-danger text-center" role="alert">
-        {{ errorMessage }}
-      </div>
+       @if(errorMessage){
+        <div class="alert alert-danger text-center" role="alert">{{ errorMessage }}</div>
+       }
 
       <!-- Success Message -->
-      <div *ngIf="successMessage" class="alert alert-success text-center" role="alert">
-        {{ successMessage }}
-      </div>
+       @if(successMessage){
+        <div class="alert alert-success text-center" role="alert">{{ successMessage }}</div>
+       }
 
       <!-- Submit Button -->
       <div class="d-grid mb-3">
@@ -64,13 +64,13 @@
 
       <!-- Login Button -->
       <div class="text-center">
-        <p class="text-muted">Already have an account?</p>
+        <p class="text-muted">{{ 'REGISTER.TIL_TITEL' | translate}}</p>
         <button
           type="button"
           class="btn btn-outline-dark px-4 py-2 shadow-sm rounded-pill"
           (click)="navigateToLogin()"
         >
-          Login
+          {{ 'REGISTER.LOGIN' | translate}}
         </button>
       </div>
     </form>

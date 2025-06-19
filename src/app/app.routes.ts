@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { Search } from './components/search/search';
-import { Home } from './components/home/home';
-import { Wishlist } from './components/wishlist/wishlist';
-import { NotFound } from './components/not-found/not-found';
-import { Details } from './components/details/details';
-import { Login } from './components/login/login';
 import { Register } from './components/register/register';
+import { Login } from './components/login/login';
+import { Search } from './components/search/search';
+import { Wishlist } from './components/wishlist/wishlist';
+import { Details } from './components/details/details';
+import { Home } from './components/home/home';
+import { NotFound } from './components/not-found/not-found';
 
 // Define application routes
 export const routes: Routes = [
@@ -22,7 +22,7 @@ export const routes: Routes = [
   { path: 'wishlist', component: Wishlist, title: 'Wishlist' },
 
   // Search page
-  { path: 'home/search', component: Search, title: 'Search' },
+  { path: 'search', component: Search, title: 'Search' },
 
   // Login page
   { path: 'login', component: Login, title: 'Login' },
