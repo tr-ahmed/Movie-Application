@@ -1,1 +1,122 @@
-<p>details works! {{movieId}}</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-4">
+      <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="img-fluid rounded shadow" alt="{{ movie.title }}">
+    </div>
+
+    <div class="col-md-8 rounded p-4 shadow-sm position-relative">
+      <h2 class="mb-3  fw-bold border-bottom pb-2">{{ movie.title }}</h2>
+       <i style="color: #ffc107;" class="bi bi-heart-fill me-2 fs-3 position-absolute top-0 end-0 "></i>
+      <p class="mb-2 fs-4 fw-bold">
+        <strong class="fs-3">Release Date:</strong>
+        {{ movie.release_date }}
+      </p>
+
+      <p class="mb-2 fs-5 fw-bold">
+        <strong class="fs-3">Rating:</strong>
+        ⭐ {{ movie.vote_average }}/10
+      </p>
+
+      <p class="mb-1 fs-5 fw-bold"><strong class="">Overview:</strong></p>
+      <p class=" small fs-5 fw-bold" style="line-height: 1.6;">{{ movie.overview }}</p>
+       
+
+<!-- Genres as Buttons -->
+<div class="mb-2 fs-5 fw-bold">
+
+  <div class="mt-2 d-flex flex-wrap gap-2">
+    <button
+       style="background-color: #ffc107;"
+      *ngFor="let genre of movie.genres"
+      class="btn btn-sm px-4 text-dark fw-bold rounded-pill mx-1 my-2"
+      
+      disabled
+    >
+      {{ genre.name }}
+    </button>
+  </div>
+</div>
+
+        <!-- Row for Duration & Language -->
+<div class="d-flex flex-wrap gap-4 mb-3">
+  <p class="mb-0  ">
+    <strong class="">Duration:</strong>
+    {{ movie.runtime }} Mins
+  </p>
+
+  <p class="mb-0 ">
+    <strong class="">Language:</strong>
+    {{ movie.original_language | uppercase }}
+  </p>
+</div>
+
+
+
+
+      <a class="btn mt-3 text-dark fw-bold" style="background-color: #ffc107;" routerLink="/home">← Back to Movies</a>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Recommendations Section -->
+<div class="mt-5 container">
+  <h4 class="fs-3 fw-bold mb-4 border-bottom pb-2">Recommended Movies</h4>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+    <div class="col" *ngFor="let movie of recommendedMovies.slice(0, 4)">
+      <div
+        class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative"
+      >
+        <img
+          [routerLink]="['/details', movie.id]"
+          class="card-img-top rounded-0"
+          [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+          alt="{{ movie.title }}"
+        />
+
+        <!-- Donut Rating -->
+        <div
+          class="position-absolute m-2"
+          style="width: 50px; height: 50px; bottom: 87px; left: 10px"
+        >
+          <svg viewBox="0 0 36 36" width="50" height="50">
+            <path
+              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              stroke="#e6e6e6"
+              stroke-width="4"
+              fill="none"
+            />
+            <path
+              [attr.stroke]="getStrokeColor(movie.vote_average)"
+              [attr.stroke-dasharray]="(movie.vote_average / 10 * 100)"
+              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              stroke-width="4"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <circle cx="18" cy="18" r="15" fill="#14532d" />
+            <text
+              x="18"
+              y="20.5"
+              text-anchor="middle"
+              fill="#fff"
+              font-size="8"
+              dominant-baseline="middle"
+            >
+              {{ movie.vote_average * 10 | number : '1.1-1' }} %
+            </text>
+          </svg>
+        </div>
+
+        <div class="card-body">
+          <h6 class="card-title mt-3">{{ movie.title }}</h6>
+          <p class="card-text text-muted">
+            {{ movie.release_date | date: 'MMM dd, yyyy' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

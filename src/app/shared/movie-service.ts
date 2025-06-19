@@ -31,4 +31,9 @@ export class MovieService {
   decreaseCounter() {
     this._counter.next(this._counter.value - 1);
   }
+
+  getRecommendations(page: number): Observable<any> {
+      return this._httpClient.get(`https://api.themoviedb.org/3/movie/popular?api_key=668493e3285671fd89719073e48cf97e&page=${page}`)
+
+}
 }
