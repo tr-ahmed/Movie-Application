@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
 export interface User {
   username: string;
   password: string;
@@ -10,7 +9,7 @@ export interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  private storageKey = 'currentUser';
+private storageKey = 'currentUser';
   private usersKey = 'users';
 
   // BehaviorSubject to track login state

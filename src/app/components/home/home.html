@@ -1,10 +1,10 @@
 <!-- Search Bar -->
-<div class="container mt-4 p-5" style="background-color: #F3F1F1;">
+<div class="container mt-4 p-5 bg-light rounded-3 shadow-sm">
   <div>
-    <h1>Welcome to our movie app</h1>
+    <h1 class="fw-bold">{{'HOME.TITEL' | translate}}</h1>
   </div>
   <div class="my-3">
-    <p>Millions of movies, TV shows, and people to discover. Explore now.</p>
+    <p class="lead text-muted">{{'HOME.SUB_TITEL' | translate}}</p>
   </div>
   <div>
     <div class="input-group mb-3">
@@ -12,38 +12,37 @@
         [(ngModel)]="query"
         (ngModelChange)="filterResults()"
         type="text"
-        class="form-control rounded-2"
-        placeholder="Search for movies"
+        class="form-control form-control-lg rounded-pill"
+        placeholder="{{'HOME.SEARCH_PLACEHOLDER' | translate}}"
       />
       <button
-        class="btn ms-3 rounded-2"
-        style="background-color: #ffc107;"
+        class="btn btn-warning ms-2 rounded-pill px-4 fw-bold"
         routerLink="search"
+        [disabled]="!query"
       >
-        Search
+        {{'HOME.SERCH' | translate}}
       </button>
     </div>
   </div>
 </div>
 
 <!-- Movie Grid -->
-<div class="container my-4">
-  <div class="mb-3">
-    <h1>Now Playing</h1>
+<div class="container my-5">
+  <div class="mb-4">
+    <h1 class="fw-bold">{{'HOME.NOW_PLAYING' | translate}}</h1>
   </div>
-  <div class="row row-cols-2 row-cols-md-4 g-4">
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
     <div class="col" *ngFor="let movie of paginatedResults">
       <div
         class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative"
       >
         <img
           [routerLink]="['/details', movie.id]"
-          class="card-img-top rounded-0"
+          class="card-img-top"
           [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
           alt="{{ movie.title }}"
         />
 
-        <!-- Donut Rating -->
         <div
           class="position-absolute m-2"
           style="width: 50px; height: 50px; bottom: 87px; left: 10px"
@@ -59,7 +58,7 @@
             />
             <path
               [attr.stroke]="getStrokeColor(movie.vote_average)"
-              [attr.stroke-dasharray]="(movie.vote_average / 10 * 100) "
+              [attr.stroke-dasharray]="(movie.vote_average / 10 * 100) + ', 100'"
               d="M18 2.0845
                  a 15.9155 15.9155 0 0 1 0 31.831
                  a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -76,27 +75,27 @@
               font-size="8"
               dominant-baseline="middle"
             >
-              {{ movie.vote_average * 10 | number : '1.1-1' }} %
+              {{ movie.vote_average * 10 | number : '1.0-0' }}%
             </text>
           </svg>
         </div>
 
         <div class="card-body">
-          <h6 class="card-title mt-3">{{ movie.title }}</h6>
+          <h6 class="card-title mt-3 fw-bold">{{ movie.title }}</h6>
           <div
             class="d-flex justify-content-between align-items-center"
           >
             <div>
-              <p class="card-text text-muted">
+              <p class="card-text text-muted small">
                 {{ movie.release_date | date: 'MMM dd, yyyy' }}
               </p>
             </div>
             <div>
               <i
-                class="fs-3"
+                class="fs-4"
                 [ngClass]="{
-                  'bi-heart-fill text-warning': isFavorite(movie),
-                  'bi-heart': !isFavorite(movie)
+                  'bi bi-heart-fill text-warning': isFavorite(movie),
+                  'bi bi-heart': !isFavorite(movie)
                 }"
                 style="cursor: pointer;"
                 (click)="toggleFavorite(movie)"
@@ -109,7 +108,7 @@
   </div>
 
   <!-- Pagination -->
-  <nav *ngIf="totalPages > 1" class="mt-4">
+  <nav *ngIf="totalPages > 1" class="mt-5">
     <ul class="pagination justify-content-center">
       <li
         class="page-item"
@@ -117,10 +116,9 @@
         (click)="changePage(currentPage - 1)"
       >
         <a
-          class="page-link text-dark"
-          style="background-color: #ffc107; border: none;"
+          class="page-link bg-warning text-dark border-0 mx-1 rounded-2"
           href="javascript:void(0)"
-          >Previous</a
+          >{{'HOME.PREVIOUS' | translate}}</a
         >
       </li>
 
@@ -131,11 +129,7 @@
         (click)="changePage(i + 1)"
       >
         <a
-          class="page-link"
-          [ngClass]="{
-            'bg-warning text-dark': currentPage === i + 1,
-            'text-dark': currentPage !== i + 1
-          }"
+          class="page-link text-dark"
           href="javascript:void(0)"
         >
           {{ i + 1 }}
@@ -148,17 +142,15 @@
         (click)="changePage(currentPage + 1)"
       >
         <a
-          class="page-link text-dark"
-          style="background-color: #ffc107; border: none;"
+          class="page-link bg-warning text-dark border-0 mx-1 rounded-2"
           href="javascript:void(0)"
-          >Next</a
+          >{{'HOME.NEXT' | translate}}</a
         >
       </li>
     </ul>
   </nav>
 </div>
 
-<!-- Login/Register Modal -->
 <div
   class="modal fade"
   id="authModal"
@@ -166,38 +158,4 @@
   aria-labelledby="authModalLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-warning text-dark rounded-top">
-        <h5 class="modal-title fw-bold" id="authModalLabel">Authentication Required</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body text-center py-4">
-        <p class="mb-4 fs-5 text-muted">
-          You need to log in or register to add movies to your wishlist.
-        </p>
-        <div class="d-flex justify-content-center gap-3">
-          <button
-            class="btn btn-dark px-4 py-2 rounded-pill shadow-sm"
-            routerLink="/login"
-            data-bs-dismiss="modal"
-          >
-            Login
-          </button>
-          <button
-            class="btn btn-outline-dark px-4 py-2 rounded-pill shadow-sm"
-            routerLink="/register"
-            data-bs-dismiss="modal"
-          >
-            Register
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

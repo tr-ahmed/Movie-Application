@@ -1,27 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Language } from "../language/language";
+import { TranslateModule } from '@ngx-translate/core';
 import { MovieService } from '../../shared/movie-service';
-import { CommonModule } from '@angular/common';
 import { AuthService } from '../../shared/auth-service';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, CommonModule],
+  imports: [Language,TranslateModule,RouterLink, CommonModule],
   templateUrl: './navbar.html',
-  styleUrls: ['./navbar.css']
+  styleUrl: './navbar.css'
 })
-export class Navbar implements OnInit {
+export class Navbar implements OnInit{
   counter: number = 0;
   isLoggedIn: boolean = false;
-
   constructor(private _movieService: MovieService, private _authService: AuthService) {}
 
-  ngOnInit(): void {
+    ngOnInit(): void {
     this._initializeCounter();
     this._subscribeToLoginState();
   }
 
-  private _initializeCounter(): void {
+  logout(): void {
+    this._authService.logout();
+  }
+
+    private _initializeCounter(): void {
     this._movieService.counter$.subscribe(count => {
       this.counter = count;
     });
@@ -31,9 +36,6 @@ export class Navbar implements OnInit {
     this._authService.loginState$.subscribe(state => {
       this.isLoggedIn = state; // Update login state dynamically
     });
-  }
+}
 
-  logout(): void {
-    this._authService.logout();
-  }
 }

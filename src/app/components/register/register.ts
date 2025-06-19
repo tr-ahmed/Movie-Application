@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '../../shared/auth-service';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
-  imports: [CommonModule, FormsModule],
+  imports: [TranslateModule,CommonModule, FormsModule],
   templateUrl: './register.html',
-  styleUrls: ['./register.css']
+  styleUrl: './register.css'
 })
 export class Register {
   username = '';
@@ -16,8 +17,7 @@ export class Register {
   confirmPassword = '';
   errorMessage = '';
   successMessage = '';
-
-  constructor(private _authService: AuthService, private _router: Router) {}
+   constructor(private _authService: AuthService, private _router: Router) {}
 
   register(): void {
     if (this.password !== this.confirmPassword) {

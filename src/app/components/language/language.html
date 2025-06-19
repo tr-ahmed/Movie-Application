@@ -1,1 +1,14 @@
-<p>language works!</p>
+<div class="dropdown">
+  <button class="btn btn-outline-dark rounded-pill dropdown-toggle fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    {{ currentLang.toUpperCase() }}
+  </button>
+    <ul class="dropdown-menu">
+        @for(lang of supportedLangs; track lang){
+        <li>
+            <a class="dropdown-item" [class.active]="lang === currentLang" (click)="changeLanguage(lang, $event)">
+                {{ lang.toUpperCase() }}
+            </a>
+        </li>
+        }
+    </ul>
+</div>

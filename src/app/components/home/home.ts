@@ -1,19 +1,26 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { forkJoin, Observable } from 'rxjs';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { MovieService } from '../../shared/movie-service';
+import { LanguageService } from '../../shared/language-service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../../shared/auth-service';
-import * as bootstrap from 'bootstrap'; // Import Bootstrap for modal functionality
+import { forkJoin, Observable, Subject, takeUntil } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+
+export interface Movie {
+  id: number;
+  title: string;
+}
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [TranslateModule,CommonModule, FormsModule, RouterLink],
   templateUrl: './home.html',
-  styleUrls: ['./home.css'],
+  styleUrl: './home.css'
 })
-export class Home implements OnInit {
+export class Home implements OnInit,OnDestroy {
   protected title = 'movieApp';
   allResults: any[] = [];
   results: any[] = [];
@@ -23,22 +30,34 @@ export class Home implements OnInit {
   currentPage = 1;
   itemsPerPage = 8;
 
-  constructor(
-    private _movieService: MovieService,
-    private _authService: AuthService // Inject AuthService
-  ) {}
+  private readonly destroy$ = new Subject<void>();
+  // imageUrl: string = 'https://image.tmdb.org/t/p/w500';
+
+  constructor(private translate: TranslateService, private _movieService: MovieService,private toastr: ToastrService,private _authService: AuthService,private languageService: LanguageService ) { }
 
   ngOnInit() {
     this.getAllMovies();
     this.favorites = this._movieService.favorites;
+
+    this.languageService.language$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.getAllMovies();
+        this.favorites = this._movieService.favorites;
+      });
   }
 
-  getAllMovies() {
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+getAllMovies() {
     const totalPages = 5;
     const requests: Observable<any>[] = [];
 
     for (let page = 1; page <= totalPages; page++) {
-      requests.push(this._movieService.getMoviesByPage(page));
+      requests.push(this._movieService.getNowPlaying(page));
     }
 
     forkJoin(requests).subscribe({
@@ -86,27 +105,31 @@ export class Home implements OnInit {
     return '#28a745';
   }
 
-  toggleFavorite(movie: any) {
+  toggleFavorite(movie: Movie): void {
     if (!this._authService.isAuthenticated()) {
-      // Show the modal if the user is not logged in
-      const authModal = new bootstrap.Modal(document.getElementById('authModal')!);
-      authModal.show();
+      const message = this.translate.instant('TOAST.WISHLIST_LOGIN_REQUIRED_MESSAGE');
+    const title = this.translate.instant('TOAST.AUTHENTICATION_REQUIRED_TITLE');
+      this.toastr.warning(message,title);
       return;
     }
 
-    // User is authenticated, proceed with adding/removing from favorites
     const index = this.favorites.findIndex((f) => f.id === movie.id);
     if (index > -1) {
       this.favorites.splice(index, 1);
       this._movieService.decreaseCounter();
+      const removeMessage = this.translate.instant('TOAST.REMOVED_FROM_FAVORITES', { movieTitle: movie.title });
+      this.toastr.info(removeMessage);
     } else {
       this.favorites.push(movie);
       this._movieService.increaseCounter();
+      const addMessage = this.translate.instant('TOAST.ADDED_TO_FAVORITES', { movieTitle: movie.title });
+      this.toastr.success(addMessage);
     }
     this._movieService.favorites = this.favorites;
   }
 
-  isFavorite(movie: any): boolean {
-    return this.favorites.some((f) => f.id === movie.id);
-  }
+isFavorite(movie: Movie): boolean {
+  return this.favorites.some((f) => f.id === movie.id);
+}
+
 }
