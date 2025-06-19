@@ -22,7 +22,7 @@ export const routes: Routes = [
   { path: 'wishlist', component: Wishlist, title: 'Wishlist' },
 
   // Search page
-  { path: 'search', component: Search, title: 'Search' },
+  { path: 'home/search', component: Search, title: 'Search' },
 
   // Login page
   { path: 'login', component: Login, title: 'Login' },
